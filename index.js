@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const url = require("./routes/url");
 
 dotenv.config();
 
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 const DB_URI = process.env.DB_URI;
 
 mongoose.connect(
@@ -18,9 +19,8 @@ mongoose.connect(
         console.log("DB connected");
     }
 );
+app.use(express.json());
 
-app.get("/short", (req, res) => {
-    res.send("This is the /short url");
-});
+app.use("/shorten", require("./routes/url"));
 
-app.listen(port, () => console.log("Server listening on port 3000"));
+app.listen(PORT, () => console.log("Server listening on port " + PORT));
