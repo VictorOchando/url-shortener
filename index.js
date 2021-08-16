@@ -21,6 +21,6 @@ mongoose.connect(
 );
 app.use(express.json());
 
-app.use("/shorten", require("./routes/url"));
+app.use("/shorten", url);
 
 app.listen(PORT, () => console.log("Server listening on port " + PORT));

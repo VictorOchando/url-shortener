@@ -1,6 +1,9 @@
 const express = require("express");
 const validUrl = require("valid-url");
 const shortid = require("shortid");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const router = express.Router();
 
