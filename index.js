@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const url = require("./routes/url");
+const redirect = require("./routes/redirect");
 
 dotenv.config();
 
@@ -22,5 +23,6 @@ mongoose.connect(
 app.use(express.json());
 
 app.use("/shorten", url);
+app.use("/", redirect);
 
 app.listen(PORT, () => console.log("Server listening on port " + PORT));
