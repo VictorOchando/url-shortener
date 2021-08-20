@@ -1,4 +1,5 @@
 const express = require("express");
+var cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -20,6 +21,7 @@ mongoose.connect(
         console.log("DB connected");
     }
 );
+app.use(cors());
 app.use(express.json());
 
 app.use("/shorten", url);
